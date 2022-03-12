@@ -74,7 +74,7 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
 
-- stage: 'Deploy'
+- stage: 'Dev'
   displayName: 'Deploy the web application'
   dependsOn: Build
   condition: |
@@ -125,7 +125,7 @@ stages:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appName: '$(WebAppNameTest)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-              
+
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
   dependsOn: Test
